@@ -23,17 +23,8 @@ func compare(item:background) -> bool:
 func serialize() -> Dictionary:
 	return { 
 		"texture":        texture, 
-		"startColor":     startColor, 
-		"endColor":       endColor, 
+		"startColor":     "#" + startColor.to_html(false), 
+		"endColor":       '#' + endColor.to_html(false),
 		"imageOpacity":   imageOpacity,
 		"overlayOpacity": overlayOpacity
 	}
-
-func _to_string() -> String:
-	return '{ "texture": "{0}", "startColor": "#{1}", "endColor": "#{2}", "imageOpacity": "{3}", "overlayOpacity": "{4}" }'.format({\
-		0: texture,
-		1: startColor.to_html(false),
-		2: endColor.to_html(false),
-		3: imageOpacity,
-		4: overlayOpacity
-	})

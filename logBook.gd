@@ -11,13 +11,21 @@ func clear():
 	for item in items.get_children():
 		item.queue_free()
 		
+#func loadColors(_saved: backgroundCollection):
+	#saved = _saved
+	#clear()
+	#for item in _saved.backgrounds:
+		#var entry = LOGENTRY.instantiate()
+		#items.add_child(entry)
+		#entry.setLabels(item.texture, item.startColor.to_html(false), item.endColor.to_html(false), item.imageOpacity, item.overlayOpacity)
+
 func loadColors(_saved: backgroundCollection):
 	saved = _saved
 	clear()
 	for item in _saved.backgrounds:
 		var entry = LOGENTRY.instantiate()
 		items.add_child(entry)
-		entry.setLabels(item.texture, item.startColor.to_html(false), item.endColor.to_html(false), item.imageOpacity, item.overlayOpacity)
+		entry.setLabels(item)
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	if filedialog.title == "Resource Export":

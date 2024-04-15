@@ -16,16 +16,10 @@ func saveRes(path : String):
 	ResourceSaver.save(self, path)
 
 func saveJSON(path : String):
-	var build : String = ""
+	var build = []
+	for item : background in backgrounds:
+		build.append(item.serialize())
+
 	var json = FileAccess.open(path, FileAccess.WRITE)
-
-	# Build the json
-	for item in backgrounds:
-		build += "\t" + str(item).replace('\\', '/') + ",\n"
-	build = build.left(build.length() - 2) + "\n"
-
-	# Write
-	json.store_string('{ "backgrounds" : [\n')
-	json.store_string(build)
-	json.store_string("]}\n")
+	json.store_string(JSON.stringify({ "backgrounds" : build }, "\t"))
 	json.close()

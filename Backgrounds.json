@@ -1,0 +1,14 @@
+{ "backgrounds" : [
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/2.png", "startColor": "#040429", "endColor": "#3e101c", "imageOpacity": 0.7, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/3.png", "startColor": "#042904", "endColor": "#37103e", "imageOpacity": 0.7, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/4.png", "startColor": "#291904", "endColor": "#10263e", "imageOpacity": 0.7, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/5.png", "startColor": "#290404", "endColor": "#103e16", "imageOpacity": 0.7, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/6.png", "startColor": "#0b0429", "endColor": "#103e32", "imageOpacity": 0.7, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/7.png", "startColor": "#181e14", "endColor": "#3e1035", "imageOpacity": 0.7, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/2.png", "startColor": "#4f2219", "endColor": "#11103e", "imageOpacity": 0.5, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/3.png", "startColor": "#19204f", "endColor": "#2f4c50", "imageOpacity": 0.5, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/4.png", "startColor": "#0a2730", "endColor": "#323a22", "imageOpacity": 0.5, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/5.png", "startColor": "#316f81", "endColor": "#6b0530", "imageOpacity": 0.5, "overlayOpacity": 0.7 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/6.png", "startColor": "#418131", "endColor": "#391222", "imageOpacity": 0.8, "overlayOpacity": 0.5 },
+	{ "texture": "C:/Dev/godot/v4 projects/bg/bg/7.png", "startColor": "#71721e", "endColor": "#0d2e73", "imageOpacity": 0.65, "overlayOpacity": 0.45 }
+]}

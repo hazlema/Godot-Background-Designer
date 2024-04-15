@@ -9,15 +9,22 @@ const HOVER = preload("res://resources/hover.tres")
 @onready var imageOpacity:   Label = $MarginContainer/VBoxContainer/HBoxContainer2/setImageOpacity
 @onready var overlayOpacity: Label = $MarginContainer/VBoxContainer/HBoxContainer2/setOverlayOpacity
 
-func setLabels(_texture, _startColor, _endColor, _imageOpacity, _overlayOpacity):
-	texture.text        = _texture
-	startColor.text     = "#" + _startColor
-	endColor.text       = "#" + _endColor
-	imageOpacity.text   = str(_imageOpacity)
-	overlayOpacity.text = str(_overlayOpacity)
+var item:background
+
+func setLabels(_item:background):
+	item = _item
+	texture.text        = item.texture
+	startColor.text     = "#" + item.startColor.to_html(false)
+	endColor.text       = "#" + item.endColor.to_html(false)
+	imageOpacity.text   = str(item.imageOpacity)
+	overlayOpacity.text = str(item.overlayOpacity)
 
 func _on_mouse_entered() -> void:
 	add_theme_stylebox_override("panel", HOVER)
 
 func _on_mouse_exited() -> void:
 	add_theme_stylebox_override("panel", NORMAL)
+
+func _on_gui_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_select"):
+		Events.sendLoadBackground(item)

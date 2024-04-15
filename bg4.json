@@ -1,0 +1,88 @@
+{
+	"backgrounds": [
+		{
+			"endColor": "#3e101c",
+			"imageOpacity": 0.7,
+			"overlayOpacity": 0.7,
+			"startColor": "#040429",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/2.png"
+		},
+		{
+			"endColor": "#37103e",
+			"imageOpacity": 0.7,
+			"overlayOpacity": 0.7,
+			"startColor": "#042904",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/3.png"
+		},
+		{
+			"endColor": "#10263e",
+			"imageOpacity": 0.7,
+			"overlayOpacity": 0.7,
+			"startColor": "#291904",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/4.png"
+		},
+		{
+			"endColor": "#103e16",
+			"imageOpacity": 0.7,
+			"overlayOpacity": 0.7,
+			"startColor": "#290404",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/5.png"
+		},
+		{
+			"endColor": "#103e32",
+			"imageOpacity": 0.7,
+			"overlayOpacity": 0.7,
+			"startColor": "#0b0429",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/6.png"
+		},
+		{
+			"endColor": "#3e1035",
+			"imageOpacity": 0.7,
+			"overlayOpacity": 0.7,
+			"startColor": "#181e14",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/7.png"
+		},
+		{
+			"endColor": "#11103e",
+			"imageOpacity": 0.5,
+			"overlayOpacity": 0.7,
+			"startColor": "#4f2219",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/2.png"
+		},
+		{
+			"endColor": "#2f4c50",
+			"imageOpacity": 0.5,
+			"overlayOpacity": 0.7,
+			"startColor": "#19204f",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/3.png"
+		},
+		{
+			"endColor": "#323a22",
+			"imageOpacity": 0.5,
+			"overlayOpacity": 0.7,
+			"startColor": "#0a2730",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/4.png"
+		},
+		{
+			"endColor": "#6b0530",
+			"imageOpacity": 0.5,
+			"overlayOpacity": 0.7,
+			"startColor": "#316f81",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/5.png"
+		},
+		{
+			"endColor": "#391222",
+			"imageOpacity": 0.8,
+			"overlayOpacity": 0.5,
+			"startColor": "#418131",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/6.png"
+		},
+		{
+			"endColor": "#0d2e73",
+			"imageOpacity": 0.65,
+			"overlayOpacity": 0.45,
+			"startColor": "#71721e",
+			"texture": "C:/Dev/godot/v4 projects/bg/bg/7.png"
+		}
+	]
+}

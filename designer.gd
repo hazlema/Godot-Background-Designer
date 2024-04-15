@@ -4,7 +4,7 @@ const HOVER  = preload("res://resources/hover.tres")
 const NORMAL = preload("res://resources/normal.tres")
 
 @onready var bg:                BackgroundComponent = $VBoxContainer/Background
-@onready var popuptexture:      Button              = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/popupTexture
+@onready var popuptexture:      Button              = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer6/popupTexture
 @onready var filedialog:        FileDialog          = $FileDialog
 @onready var setOverlayOpacity: HSlider             = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/setOverlayOpacity
 @onready var setImageOpacity:   HSlider             = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/setImageOpacity
@@ -24,15 +24,16 @@ func _ready() -> void:
 
 		if item is ColorPickerButton:
 			item = item as ColorPickerButton
-			item.color_changed.connect(func(param): processClick(item.name)) 
+			item.color_changed.connect(processClick.bind(item.name).unbind(1)) 
 		elif item is HSlider:
 			item = item as HSlider
-			item.value_changed.connect(func(param): processClick(item.name)) 
+			item.value_changed.connect(processClick.bind(item.name).unbind(1)) 
 		else:
 			item.pressed.connect(processClick.bind(item.name)) 
 
-	filedialog.file_selected.connect(loadTexture)
-		
+	filedialog.file_selected.connect(fileDialogHub)
+	Events.loadBackground.connect(loadBackground)
+	
 	# Set some defaults
 	bg.startColor     = %setColorStart.color
 	bg.endColor       = %setColorEnd.color
@@ -41,7 +42,6 @@ func _ready() -> void:
 	
 func processClick(menuItem : String):
 	match menuItem:
-		"popupTexture":      $FileDialog.popup_centered()
 		"setOverlayOpacity": bg.overlayOpacity = setOverlayOpacity.value
 		"setImageOpacity":   bg.imageOpacity   = setImageOpacity.value
 		"setColorStart":     bg.startColor     = %setColorStart.color
@@ -51,7 +51,17 @@ func processClick(menuItem : String):
 		"darkenEnd":         bg.endColor       = bg.endColor.darkened(.1)
 		"lightenEnd":        bg.endColor       = bg.endColor.lightened(.1)
 		"save":              saveBackground()
-		"show":              showLog()
+		"export":            showLog()
+		"popupTexture":      
+			$FileDialog.title = "Load Texture"
+			$FileDialog.clear_filters()
+			$FileDialog.add_filter("*.png,*.bmp,*.gif;Images")
+			$FileDialog.popup_centered()
+		"import":            
+			$FileDialog.title = "Load JSON"
+			$FileDialog.clear_filters()
+			$FileDialog.add_filter("*.json;json files")
+			$FileDialog.popup_centered()
 			
 	%setColorStart.color = bg.startColor
 	%setColorEnd.color   = bg.endColor
@@ -86,8 +96,49 @@ func showLog():
 		$LogBook.loadColors(saved)
 		$LogBook.show()
 		
+func loadBackground(item:background):
+	loadTexture(item.texture)
+	
+	# Update the bg control
+	bg.startColor = item.startColor
+	bg.endColor = item.endColor
+	bg.imageOpacity = item.imageOpacity
+	bg.overlayOpacity = item.overlayOpacity
+	
+	# Update the UI
+	%setColorStart.color = item.startColor
+	%setColorEnd.color = item.endColor
+	setOverlayOpacity.value = item.overlayOpacity
+	setImageOpacity.value = item.imageOpacity
+
+
+func fileDialogHub(file:String):
+	if $FileDialog.title == "Load JSON":
+		import(file)
+	else:
+		loadTexture(file)
+
+
 func loadTexture(file:String):
 	var image : Image = Image.new()
 	image.load(file)
 	bg.imageTexture = ImageTexture.create_from_image(image)
 	bg.imageTexture.resource_path = file
+
+
+func import(file:String):
+	var t = FileAccess.open(file, FileAccess.READ)
+	var txt = t.get_as_text()
+	
+	var j : JSON = JSON.new()
+	var d : Dictionary = j.parse_string(txt)
+	for item in d.backgrounds:
+		saved.add( background.new(
+			item.texture,
+			item.startColor,
+			item.endColor,
+			item.imageOpacity,
+			item.overlayOpacity
+		))
+	
+	
