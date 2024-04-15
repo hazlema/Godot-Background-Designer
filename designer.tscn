@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2dcmdbpqm7gy"]
+
+[ext_resource type="Script" path="res://designer.gd" id="1_pofc1"]
+[ext_resource type="Script" path="res://components/BackgroundComponent.gd" id="2_c6g8s"]
+[ext_resource type="PackedScene" uid="uid://sdxxj8ehw6rn" path="res://accept_dialog.tscn" id="4_5b3e8"]
+[ext_resource type="PackedScene" uid="uid://bafkt7hc6fi58" path="res://logBook.tscn" id="4_vnn6w"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pofc1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="popupTexture" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Set Texture"
+
+[node name="setImageOpacity" type="HSlider" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+value = 0.7
+
+[node name="setOverlayOpacity" type="HSlider" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+value = 0.7
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="setColorStart" type="ColorPickerButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" groups=["button"]]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Set Color Start"
+color = Color(0.0941176, 0.0941176, 0.282353, 1)
+edit_alpha = false
+
+[node name="setColorEnd" type="ColorPickerButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" groups=["button"]]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Set Color End"
+color = Color(0.223529, 0.0431373, 0.0431373, 1)
+edit_alpha = false
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lightenStart" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lighten Start"
+
+[node name="lightenEnd" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lighten End"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="darkenStart" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Darken Start"
+
+[node name="darkenEnd" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Darken End"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="save" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Background"
+
+[node name="show" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5" groups=["button"]]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export Backgrounds"
+
+[node name="Background" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+script = ExtResource("2_c6g8s")
+startColor = Color(0.321728, 0.321728, 0.321728, 1)
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(600, 600)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png", "*.bmp", "*.gif")
+use_native_dialog = true
+
+[node name="LogBook" parent="." instance=ExtResource("4_vnn6w")]
+visible = false
+
+[node name="AcceptDialog" parent="." instance=ExtResource("4_5b3e8")]
+visible = false

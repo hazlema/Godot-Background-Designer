@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bafkt7hc6fi58"]
+
+[ext_resource type="Script" path="res://logBook.gd" id="1_p5o47"]
+
+[node name="LogBook" type="PopupPanel"]
+title = "LogBook"
+initial_position = 2
+size = Vector2i(700, 300)
+visible = true
+script = ExtResource("1_p5o47")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 696.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="tresExport" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Export as Resource"
+
+[node name="jsonExport" type="Button" parent="VBoxContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Export as JSON
+"
+
+[node name="ItemList" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ItemList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FileDialog" type="FileDialog" parent="."]
+initial_position = 2
+size = Vector2i(500, 400)
+access = 2
+use_native_dialog = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/tresExport" to="." method="_on_tres_export_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/jsonExport" to="." method="_on_json_export_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
